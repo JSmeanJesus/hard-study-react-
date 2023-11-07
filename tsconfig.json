@@ -19,6 +19,9 @@
       "compilerOptions": {
         "module": "CommonJS"
       }
-    }
+    },
+    // "include": [
+    //   "./config/jest/setupTests.ts"
+    // ],
   }
   //fix main ts to js

@@ -1,5 +1,8 @@
 {
     "Привет!": "Hello!", 
     "Главная страница": "Main page",
-    "RU": "EN"
+    "RU": "EN",
+    "Страница не найдена": "Page not found",
+    "Что-то пошло не так...":"Something went wrong...",
+    "Обновить страницу": "Update page"
 }
