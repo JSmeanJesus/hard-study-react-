@@ -2,10 +2,18 @@
     color: var(--primary-color);
 }
 
-.primary {
+.inverted-primary {
     color: var(--inverted-primary-color);
 }
 
-.secondary {
+.inverted-secondary {
     color: var(--inverted-secondary-color);
+}
+
+.primary {
+    color: var(primary-color);
+}
+
+.secondary {
+    color: var(secondary-color);
 }

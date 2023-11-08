@@ -20,8 +20,13 @@
         "module": "CommonJS"
       }
     },
-    // "include": [
-    //   "./config/jest/setupTests.ts"
-    // ],
+    "include": [
+      "./config/jest/setupTests.ts",
+      "./src/**/*.ts",
+      "./src/**/*.tsx"
+    ],
+    "exclude": [
+      "./config/storybook/webpack.config.ts"
+    ]
   }
-  //fix main ts to js
+ 
