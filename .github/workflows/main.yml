@@ -11,7 +11,7 @@ jobs:
     strategy: 
       matrix:
         node-version: [17.x]
-    
+        
     steps:
       - uses: action/checkout@v2
       - name: Starting Node.js ${{ matrix.node-version }} 🚀
@@ -28,4 +28,3 @@ jobs:
         run: npm run lint:scss
        - name: Testing 🧪
         run: npm run unit 
-        
