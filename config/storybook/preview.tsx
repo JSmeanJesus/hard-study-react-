@@ -5,7 +5,6 @@ import '../../src/app/styles/themes/light.scss';
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-
 const preview: Preview = {
     parameters: {
         actions: { argTypesRegex: "^on[A-Z].*" },
