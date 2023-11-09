@@ -78,6 +78,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
     "@storybook/preset-scss": "^1.0.3",
     "eslint-plugin-i18next": "^6.0.3",
     "i18next": "^23.6.0",
@@ -86,6 +87,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.3.1",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.18.0"
   },
   "loki": {
