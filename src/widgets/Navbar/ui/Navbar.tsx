@@ -4,6 +4,7 @@ import { t } from 'i18next'
 import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button'
 import { useCallback, useState } from 'react'
 import { Modal } from 'shared/ui/Modal/ui/Modal'
+import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal'
 
 interface NavbarProps {
   className?: string
@@ -15,8 +16,11 @@ export const Navbar = ({ className }: NavbarProps) => {
 
     const [isAuthModal, setIsAuthModal] = useState(false);
 
-    const onToggleModal = useCallback(() => {
-        setIsAuthModal((prev) => !prev);
+    const onCloseModal = useCallback(() => {
+        setIsAuthModal(false);
+    }, [])
+    const onShowModal = useCallback(() => {
+        setIsAuthModal(true);
     }, [])
 
     return (
@@ -26,16 +30,14 @@ export const Navbar = ({ className }: NavbarProps) => {
                 size={SizeButton.M}
                 theme={ThemeButton.BACKGROUND}
                 className={cls.links}
-                onClick={onToggleModal}
+                onClick={onShowModal}
             >
                 {t('Войти')}
             </Button>
-            <Modal isOpen={isAuthModal} onClose={onToggleModal}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci, natus! Saepe repudiandae a eveniet accusamus
-                nam enim, dolor alias excepturi cupiditate rem similiqu
-                earum laborum quam! Ab quisquam libero sed!
-            </Modal>    
+            <LoginModal
+                isOpen={isAuthModal}
+                onClose={onCloseModal}
+            />  
             
         </div>
     )

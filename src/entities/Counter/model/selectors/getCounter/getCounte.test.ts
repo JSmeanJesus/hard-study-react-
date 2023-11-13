@@ -15,8 +15,3 @@ describe('getCounter', () => {
 
 
 
-describe('tut', () => {
-    test(' ', () => {
-        expect().toEqual();
-    })
-});
