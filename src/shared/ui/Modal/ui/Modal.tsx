@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames';
 import cls from './Modal.module.scss';
-import { Portal } from 'shared/ui/Portal/Portal';
+//import { Portal } from 'shared/ui/Portal/Portal';
 
 interface ModalProps {
     className?: string;
