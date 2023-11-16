@@ -6,32 +6,41 @@ import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
 
-interface DynamicModuleLoaderProps {
-    key: StateSchemaKey;
-    reducer: Reducer;
+
+export type ReducerList = {
+    [key in StateSchemaKey]?: Reducer;
 }
 
+export type ReducerListEntry = [StateSchemaKey, Reducer]
 
+interface DynamicModuleLoaderProps {
+    children: React.ReactNode;
+    reducers: ReducerList;
+    removeAfterUnmount?: boolean;
+}
 
-
-export const DynamicModuleLoader:FC<DynamicModuleLoaderProps> = (props) => {
+export const DynamicModuleLoader:FC <DynamicModuleLoaderProps> = (props) => {
 
     const dispatch = useDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
-
-
-    // const {children} = props;
+    const {children, reducers, removeAfterUnmount} = props;
 
     useEffect(() => {
-        store.reducerManager.add('loginForm', loginReducer);
-        dispatch({type: '@@INITasassa'})
+
+        Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
+            store.reducerManager.add(name, reducer);
+            dispatch({type:  `@@INIT ${name}`})
+        })
+
 
         return () => {
-            
-            store.reducerManager.remove('loginForm');
-            dispatch({type: '@@DES'})
-
+            if(removeAfterUnmount) {
+                Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
+                    store.reducerManager.remove(name);
+                    dispatch({type: `@@DES ${name} `})
+                })
+            }
         }
 
         //eslint-disable-next-line
@@ -40,7 +49,7 @@ export const DynamicModuleLoader:FC<DynamicModuleLoaderProps> = (props) => {
 
     return (
         <> 
-            {/* {children} */}
+            {children}
         </>
     );
 };

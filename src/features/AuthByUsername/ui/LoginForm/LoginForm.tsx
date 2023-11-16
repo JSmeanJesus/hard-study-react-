@@ -13,23 +13,29 @@ import { getLoginUsername } from 'features/AuthByUsername/model/selectors/getLog
 import { getLoginPassword } from 'features/AuthByUsername/model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from 'features/AuthByUsername/model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
+import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 
 export interface LoginFormProps {
     className?: string;
 }
+
+const initialReducers: ReducerList = {
+    loginForm: loginReducer
+}
+
 const LoginForm = memo(function LoginForm ({ className }: LoginFormProps) { //not arrow function
 
     const {t} = useTranslation('');
     const dispatch = useDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
-
-
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginIsLoading);
+
+
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
@@ -44,32 +50,37 @@ const LoginForm = memo(function LoginForm ({ className }: LoginFormProps) { //no
     }, [dispatch, username, password])
 
     return (
-        <div className={classNames(cls.LoginForm, {}, [className])}>
-            <Text title='Форма авторизации' />
-            {error && <Text text={error} theme={TextTheme.ERROR}  />}
 
-            <Input type="text"
-                autofocus
-                placeholder="Введите имя пользователя"
-                className={classNames(cls.input )}
-                onChange={onChangeUsername}
-                value={username}
+        <DynamicModuleLoader reducers={initialReducers} >
+            <div className={classNames(cls.LoginForm, {}, [className])}>
+                <Text title='Форма авторизации' />
+                {error && <Text text={error} theme={TextTheme.ERROR}  />}
+
+                <Input type="text"
+                    autofocus
+                    placeholder="Введите имя пользователя"
+                    className={classNames(cls.input )}
+                    onChange={onChangeUsername}
+                    value={username}
                 
-            />
-            <Input type="text"
-                placeholder="Введите пароль"
-                className={classNames(cls.input )}
-                onChange={onChangePassword} 
-                value={password}
-            />
-            <Button 
-                className={classNames(cls.loginBtn )}
-                onClick={onLoginClick}
-                disabled={isLoading}
-            >
-                {t('Войти')}
-            </Button>
-        </div>
+                />
+                <Input type="text"
+                    placeholder="Введите пароль"
+                    className={classNames(cls.input )}
+                    onChange={onChangePassword} 
+                    value={password}
+                />
+                <Button 
+                    className={classNames(cls.loginBtn )}
+                    onClick={onLoginClick}
+                    disabled={isLoading}
+                >
+                    {t('Войти')}
+                </Button>
+            </div>
+        </DynamicModuleLoader>
+
+        
     );
 });
 
