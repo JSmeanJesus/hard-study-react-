@@ -6,6 +6,7 @@ describe('getLoginUsername selector',  () => {
     test('should return password', () => {
 
         const state: DeepPartial<StateSchema> = {
+            //@ts-ignore
             loginForm: {
                 username: 'name',
             }

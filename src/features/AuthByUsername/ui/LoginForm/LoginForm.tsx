@@ -13,21 +13,23 @@ import { getLoginUsername } from 'features/AuthByUsername/model/selectors/getLog
 import { getLoginPassword } from 'features/AuthByUsername/model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from 'features/AuthByUsername/model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispath/useAppDispath';
 
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess?: () => void;
 }
 
-const initialReducers: ReducerList = {
+const initialReducers: ReducersList = {
     loginForm: loginReducer
 }
 
-const LoginForm = memo(function LoginForm ({ className }: LoginFormProps) { //not arrow function
+const LoginForm = memo(function LoginForm ({ className, onSuccess }: LoginFormProps) { //not arrow function
 
     const {t} = useTranslation('');
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
     const username = useSelector(getLoginUsername);
@@ -45,9 +47,14 @@ const LoginForm = memo(function LoginForm ({ className }: LoginFormProps) { //no
         dispatch(loginActions.setPassword(value));
     }, [dispatch])
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({username, password}));
-    }, [dispatch, username, password])
+    const onLoginClick = useCallback( async () => {
+        //@ts-ignore
+        const result = await dispatch(loginByUsername({username, password}));
+        if ( result.meta.requestStatus === 'fulfilled' ) {
+            //@ts-ignore
+            onSuccess();
+        }
+    }, [onSuccess, dispatch, username, password])
 
     return (
 

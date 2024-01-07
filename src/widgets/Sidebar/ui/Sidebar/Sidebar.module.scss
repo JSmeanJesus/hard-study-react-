@@ -1,0 +1,63 @@
+.Sidebar {
+  height: calc(100vh - 80px); // add var size
+  width: var(--sidebar-width);
+  background-color: var(--inverted-bg-color);
+  position: relative;
+  transition: width 0.3s ease-in-out;
+  padding: 10px;
+}
+
+.switchers {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.LangSwitcher {
+  margin: 16px;
+}
+
+.collapsedButton {
+  position: absolute;
+  bottom: 40px;
+  right: -40px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  text-decoration: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.link {
+  opacity: 1;
+}
+
+// .icon {
+//     fill: var(--secondary-color);
+// }
+
+// search good to use svg
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+
+  .switchers {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .link {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    width: 0;
+  }
+}

@@ -1,0 +1,36 @@
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  text-decoration: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.link {
+  opacity: 1;
+}
+
+// .icon {
+//     fill: var(--secondary-color);
+// }
+
+// search good to use svg
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+
+  .switchers {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .link {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    width: 0;
+  }
+}

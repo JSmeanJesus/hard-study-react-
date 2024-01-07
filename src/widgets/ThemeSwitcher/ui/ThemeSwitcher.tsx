@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { classNames } from 'shared/lib/helpers/classNames'
 import cls from './ThemeSwitcher.module.scss'
 import { Theme, useTheme } from 'app/providers/ThemeProvider'
@@ -9,7 +9,8 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button'
 interface ThemeSwitcherProps {
     className?: string
 }
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+// eslint-disable-next-line react/display-name
+export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme()
     return (
         <Button
@@ -22,4 +23,4 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
             {/* {theme === Theme.Light ? <img src="shared/assets/icons/moon.svg" alt="light item icon" /> : <img src="" alt="dark item icon" /> } */}
         </Button>
     );
-}
+});

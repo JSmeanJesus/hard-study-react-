@@ -20,6 +20,7 @@ const config: Config = {
     clearMocks: true,
     globals: {
         '__IS_DEV__': true,
+        ' __API__' : true,
     },
     coveragePathIgnorePatterns: [
         "/node_modules/"

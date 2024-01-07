@@ -20,7 +20,6 @@ export const App = () => {
         <div id='App' className={classNames('App', {}, [theme])}>
             <Suspense  fallback={ <PageLoader/> }>
                 <Navbar />
-
                 <div className='content-page'>
                     <Sidebar />
                     <AppRouter />

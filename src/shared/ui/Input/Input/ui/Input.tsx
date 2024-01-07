@@ -1,15 +1,16 @@
 import React, { InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames';
+import { Mods, classNames } from 'shared/lib/helpers/classNames';
 import cls from './Input.module.scss';
 
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string;
     onChange?: (value: string) => void;
     autofocus?: boolean;
+    readonly?: boolean;
 }
 
 // eslint-disable-next-line react/display-name
@@ -22,6 +23,8 @@ export const Input = memo((props: InputProps) => {
         type = 'text',
         placeholder,
         autofocus,
+        readonly,
+        onSelect,
         ...otherProps
     } = props;
 
@@ -48,16 +51,24 @@ export const Input = memo((props: InputProps) => {
 
     }
 
+    const mods: Mods = { 
+        [cls.focused]: isFocused,
+        [cls.readonly]: readonly,
+    }
+
     return (
-        <div className={classNames(cls.Input, {}, [className])}>
+        <div className={classNames(cls.Input, mods, [className])}>
             <input
+                readOnly={readonly}
                 ref={ref}
                 type={type}
                 value={value}
+                className={cls.input}
                 onChange={onChangeHandler}
                 placeholder={placeholder}
                 onFocus={onFocus}
                 onBlur={onBlur}
+                onSelect={onSelect}
                 {...otherProps}
             />
         </div>
