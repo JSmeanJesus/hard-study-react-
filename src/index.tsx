@@ -7,10 +7,10 @@ import 'shared/config/i18n/i18n'
 import 'app/styles/index.scss'
 import { StoreProvider } from 'app/providers/StoreProvider'
 
-const root = createRoot(document.getElementById('root')!);
+const root = createRoot(document.getElementById('root')!)
 
 root.render(
-    <BrowserRouter> 
+    <BrowserRouter>
         <StoreProvider>
             <ErrorBoundary>
                 <ThemeProvider>
@@ -18,6 +18,5 @@ root.render(
                 </ThemeProvider>
             </ErrorBoundary>
         </StoreProvider>
-    </BrowserRouter>
-    ,
+    </BrowserRouter>,
 )

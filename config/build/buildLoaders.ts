@@ -1,8 +1,8 @@
-import type webpack from 'webpack'
-import { type BuildOptions } from './types/config'
-import { buildCssLoaders } from './loaders/buildCssLoaders'
+import type webpack from 'webpack';
+import { type BuildOptions } from './types/config';
+import { buildCssLoaders } from './loaders/buildCssLoaders';
 
-export function buildLoaders ({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     const babelLoader = {
         test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
@@ -10,46 +10,40 @@ export function buildLoaders ({ isDev }: BuildOptions): webpack.RuleSetRule[] {
             loader: 'babel-loader',
             options: {
                 presets: ['@babel/preset-env'],
-                "plugins": [
-                    ['i18next-extract',
+                plugins: [
+                    [
+                        'i18next-extract',
                         {
                             locales: ['ru', 'en'],
-                            keyAsDefaultValue: true
-                        }]
-                ]
-            }
-        }
-    }
-    
+                            keyAsDefaultValue: true,
+                        },
+                    ],
+                ],
+            },
+        },
+    };
+
     const styleLoader = buildCssLoaders(isDev);
 
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/
-    }
+        exclude: /node_modules/,
+    };
 
     const svgLoader = {
         test: /\.svg$/,
-        use: ['@svgr/webpack']
-    }
+        use: ['@svgr/webpack'],
+    };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
         use: [
             {
-                loader: 'file-loader'
+                loader: 'file-loader',
             },
         ],
-    }
+    };
 
-   
-    return [
-        babelLoader,
-        fileLoader,
-        svgLoader,
-        typescriptLoader,
-        styleLoader,
-
-    ]
+    return [babelLoader, fileLoader, svgLoader, typescriptLoader, styleLoader];
 }

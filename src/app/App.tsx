@@ -10,22 +10,21 @@ import { userActions } from 'entities/User'
 
 export const App = () => {
     const { theme } = useTheme()
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(userActions.initAuthData())
     }, [dispatch])
-    
+
     return (
-        <div id='App' className={classNames('App', {}, [theme])}>
-            <Suspense  fallback={ <PageLoader/> }>
+        <div id="App" className={classNames('App', {}, [theme])}>
+            <Suspense fallback={<PageLoader />}>
                 <Navbar />
-                <div className='content-page'>
+                <div className="content-page">
                     <Sidebar />
                     <AppRouter />
                 </div>
             </Suspense>
         </div>
-
     )
 }

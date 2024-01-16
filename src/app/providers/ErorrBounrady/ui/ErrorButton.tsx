@@ -16,7 +16,6 @@ export const ErrorButton = ({ className }: ErrorButtonProps) => {
         }
     }, [error]);
 
-
     return (
         <Button onClick={throwError} className={classNames('', {}, [])}>
             throw error
