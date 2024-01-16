@@ -8,21 +8,26 @@ import HomeIcon from 'shared/assets/icons/home.svg';
 import { SidebarItemType } from 'widgets/Sidebar/model/items';
 
 interface SidebarItemsProps {
-  item?: SidebarItemType;
-  collapsed?: boolean;
+    item?: SidebarItemType;
+    collapsed?: boolean;
 }
 export const SidebarItems = ({ item, collapsed }: SidebarItemsProps) => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
-    if(item) {
+    if (item) {
         return (
-            <AppLink  className={classNames(cls.item, {[cls.collapsed]: collapsed}, [])}
+            <AppLink
+                className={classNames(
+                    cls.item,
+                    { [cls.collapsed]: collapsed },
+                    [],
+                )}
                 theme={AppLinkTheme.INVERTED_SECONDARY}
-                to={item.path}>
-                <item.Icon className={cls.icon}/>
-                <span className={cls.link}>
-                    {item.text}
-                </span>
+                to={item.path}
+            >
+                <item.Icon className={cls.icon} />
+                <span className={cls.link}>{item.text}</span>
             </AppLink>
         );
-    }};
+    }
+};
