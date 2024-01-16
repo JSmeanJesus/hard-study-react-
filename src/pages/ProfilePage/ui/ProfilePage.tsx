@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { classNames } from 'shared/lib/helpers/classNames'
-import cls from './ProfilePage$.module.scss'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import {
     Profile,
@@ -13,6 +12,7 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispath/useAppDispath'
 import { ProfileCard } from 'entities/Profile/ui/ProfileCard/ProfileCard'
 import { useSelector } from 'react-redux'
+import cls from './ProfilePage$.module.scss'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 
 interface Props {

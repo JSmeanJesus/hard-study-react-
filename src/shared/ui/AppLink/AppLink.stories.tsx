@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { AppLink } from './AppLink';
+
 'app/styles/index.scss';
 '../../app/styles/index.scss';
-import { AppLink } from './AppLink';
 
 const meta = {
     title: 'ui/AppLink',

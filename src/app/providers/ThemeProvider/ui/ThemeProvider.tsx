@@ -18,8 +18,8 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
     const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme)
 
     const defaultProps = useMemo(() => ({
-        theme: theme,
-        setTheme: setTheme
+        theme,
+        setTheme
     }), [theme])
 
     return (

@@ -6,7 +6,7 @@ describe('getLoginIsLoading selector',  () => {
     test('should return true', () => {
 
         const state: DeepPartial<StateSchema> = {
-            //@ts-ignore
+            // @ts-ignore
             loginForm: {
                 isLoading: true,
             }

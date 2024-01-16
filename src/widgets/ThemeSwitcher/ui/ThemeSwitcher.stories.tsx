@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-'app/styles/index.scss';
-'../../app/styles/index.scss';
 import { ThemeSwitcher } from './ThemeSwitcher';
+
+('app/styles/index.scss');
+('../../app/styles/index.scss');
 
 const meta = {
     title: 'shared/ThemeSwitcher',
@@ -23,7 +24,7 @@ export const Dark: Story = {
     args: {},
     decorators: [
         (Story) => (
-            <div className='App dark'>
+            <div className="App dark">
                 <Story />
             </div>
         ),

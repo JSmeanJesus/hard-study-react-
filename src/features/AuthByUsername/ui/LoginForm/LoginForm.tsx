@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames';
-import cls from './LoginForm.module.scss';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input/ui/Input';
@@ -15,6 +14,7 @@ import { getLoginIsLoading } from 'features/AuthByUsername/model/selectors/getLo
 import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispath/useAppDispath';
+import cls from './LoginForm.module.scss';
 
 
 export interface LoginFormProps {
@@ -26,7 +26,7 @@ const initialReducers: ReducersList = {
     loginForm: loginReducer
 }
 
-const LoginForm = memo(function LoginForm ({ className, onSuccess }: LoginFormProps) { //not arrow function
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => { // not arrow function
 
     const {t} = useTranslation('');
     const dispatch = useAppDispatch();
@@ -48,10 +48,10 @@ const LoginForm = memo(function LoginForm ({ className, onSuccess }: LoginFormPr
     }, [dispatch])
 
     const onLoginClick = useCallback( async () => {
-        //@ts-ignore
+        // @ts-ignore
         const result = await dispatch(loginByUsername({username, password}));
         if ( result.meta.requestStatus === 'fulfilled' ) {
-            //@ts-ignore
+            // @ts-ignore
             onSuccess();
         }
     }, [onSuccess, dispatch, username, password])

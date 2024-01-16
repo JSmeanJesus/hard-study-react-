@@ -17,10 +17,10 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
         const { extra, dispatch, rejectWithValue } = thunkApi;
 
         try {
-            //@ts-ignore
+            // @ts-ignore
             const response = await extra.api.post<User>('/login', authData);
 
-            //dosent work error
+            // dosent work error
             if(!response.data) {
                 throw new Error('No data');
             }

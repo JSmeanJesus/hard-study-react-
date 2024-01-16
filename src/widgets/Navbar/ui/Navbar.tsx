@@ -1,11 +1,11 @@
 import { classNames } from 'shared/lib/helpers/classNames'
-import cls from './Navbar.module.scss'
 import { t } from 'i18next'
 import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button'
 import { useCallback, useState } from 'react'
 import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserAuthData, userActions } from 'entities/User'
+import cls from './Navbar.module.scss'
 
 interface NavbarProps {
   className?: string

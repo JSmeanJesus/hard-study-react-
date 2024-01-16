@@ -1,56 +1,50 @@
-import React, { FC, useEffect } from 'react';
-import cls from './DynamicModuleLoader$.module.scss';
+import React, { FC, ReactNode, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
-
+import cls from './DynamicModuleLoader$.module.scss';
 
 export type ReducersList = {
     [key in StateSchemaKey]?: Reducer;
-}
+};
 
-export type ReducerListEntry = [StateSchemaKey, Reducer]
+export type ReducerListEntry = [StateSchemaKey, Reducer];
 
 interface DynamicModuleLoaderProps {
-    children: React.ReactNode;
     reducers: ReducersList;
     removeAfterUnmount?: boolean;
+    children: ReactNode;
 }
 
-export const DynamicModuleLoader:FC <DynamicModuleLoaderProps> = (props) => {
-
+export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
     const dispatch = useDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
-    const {children, reducers, removeAfterUnmount} = props;
+    const { children, reducers, removeAfterUnmount } = props;
 
-    useEffect(() => {
-        //@ts-ignore
-        Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
-            store.reducerManager.add(name, reducer);
-            dispatch({type:  `@@INIT ${name}`})
-        })
+    // @ts-nocheck
+    // useEffect(() => {
+    //     Object.entries(reducers).forEach(
+    //         @
+    //         ([name, reducer]: ReducerListEntry) => {
+    //             store.reducerManager.add(name, reducer);
+    //             dispatch({ type: `@@INIT ${name}` });
+    //         },
+    //     );
 
+    //     return () => {
+    //         if (removeAfterUnmount) {
+    //             Object.entries(reducers).forEach(
+    //                 ([name, reducer]: ReducerListEntry) => {
+    //                     store.reducerManager.remove(name);
+    //                     dispatch({ type: `@@DES ${name} ` });
+    //                 },
+    //             );
+    //         }
+    //     };
+    // }, []);
 
-        return () => {
-            if(removeAfterUnmount) {
-                //@ts-ignore
-                Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
-                    store.reducerManager.remove(name);
-                    dispatch({type: `@@DES ${name} `})
-                })
-            }
-        }
-
-        //eslint-disable-next-line
-    }, [])
-
-
-    return (
-        <> 
-            {children}
-        </>
-    );
+    return <div> {children}</div>;
 };

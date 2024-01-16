@@ -33,7 +33,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         const { children } = this.props
 
         if (hasError) {
-            return <Suspense fallback={''}> <PageError /> </Suspense>;
+            return <Suspense fallback=""> <PageError /> </Suspense>;
             // return <PageError />;
             // return <h1>{t('Что-то пошло не так...')}</h1>;
         }
@@ -44,4 +44,4 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
 
 export default ErrorBoundary;
-//use HOK if you want to use Translation
+// use HOK if you want to use Translation

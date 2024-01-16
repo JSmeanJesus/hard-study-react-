@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Loader } from './Loader';
+
 'app/styles/index.scss';
 '../../app/styles/index.scss';
-import { Loader } from './Loader';
 
 const meta = {
     title: 'shared/Loader',

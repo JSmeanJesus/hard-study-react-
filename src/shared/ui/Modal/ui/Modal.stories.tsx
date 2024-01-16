@@ -1,9 +1,10 @@
-//to do 
+// to do 
 
 import type { Meta, StoryObj } from '@storybook/react';
+import { Modal } from './Modal';
+
 'app/styles/index.scss';
 '../../app/styles/index.scss';
-import { Modal } from './Modal';
 
 const meta = {
     title: 'smth/Modal',

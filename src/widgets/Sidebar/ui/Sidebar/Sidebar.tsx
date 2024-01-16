@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react'
 import { classNames } from 'shared/lib/helpers/classNames'
-import cls from './Sidebar.module.scss'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LangSwitcher } from 'widgets/LangSwitcher'
 import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button'
@@ -8,6 +7,7 @@ import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { useTranslation } from 'react-i18next'
 import { SidebarItemsList } from 'widgets/Sidebar/model/items'
+import cls from './Sidebar.module.scss'
 import { SidebarItems } from '../SidebarItems/SidebarItems'
 
 interface SidebarProps {
@@ -31,7 +31,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
     )), [collapsed])
 
     return (
-        <div data-testid={'sidebar'}
+        <div data-testid="sidebar"
             className={classNames(cls.Sidebar,
                 { [cls.collapsed]: collapsed },
                 [className])}

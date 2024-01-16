@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import MainPage  from './MainPage';
+
 'app/styles/index.scss';
 '../../app/styles/index.scss';
-import MainPage  from './MainPage';
 
 const meta = {
     title: 'smth/MainPage',

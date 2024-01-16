@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { NotFoundPage } from './NotFoundPage';
+
 'app/styles/index.scss';
 '../../app/styles/index.scss';
-import { NotFoundPage } from './NotFoundPage';
 
 const meta = {
     title: 'smth/NotFoundPage',

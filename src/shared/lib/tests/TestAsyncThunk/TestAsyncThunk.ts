@@ -9,7 +9,9 @@ type ActionCreateType<Return, Arg, RejectValue> = (arg: Arg) => AsyncThunkAction
 
 export class TestAsyncThunk<Return, Arg, RejectValue> {
     dispatch: jest.MockedFn<any>;
+
     getState: () => StateSchema;
+
     actionCreator: ActionCreateType<Return, Arg, RejectValue>;
 
     constructor (actionCreator: ActionCreateType<Return, Arg, RejectValue>) {

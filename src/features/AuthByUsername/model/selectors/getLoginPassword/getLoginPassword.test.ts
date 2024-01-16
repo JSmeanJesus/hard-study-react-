@@ -6,7 +6,7 @@ describe('getLoginPassword selector',  () => {
     test('should return password', () => {
 
         const state: DeepPartial<StateSchema> = {
-            //@ts-ignore
+            // @ts-ignore
             loginForm: {
                 password: '123123',
             }

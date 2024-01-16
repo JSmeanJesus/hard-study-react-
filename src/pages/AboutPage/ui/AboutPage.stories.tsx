@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import AboutPage  from './AboutPage';
+
 'app/styles/index.scss';
 '../../app/styles/index.scss';
-import AboutPage  from './AboutPage';
 
 const meta = {
     title: 'pages/AboutPage',

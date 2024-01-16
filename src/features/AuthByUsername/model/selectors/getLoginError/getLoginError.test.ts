@@ -6,7 +6,7 @@ describe('getLoginError selector',  () => {
     test('should return error', () => {
 
         const state: DeepPartial<StateSchema> = {
-            //@ts-ignore
+            // @ts-ignore
             loginForm: {
                 error: 'error',
             }

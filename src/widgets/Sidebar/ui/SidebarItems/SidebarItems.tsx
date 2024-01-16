@@ -1,11 +1,11 @@
 import React from 'react';
 import { classNames } from 'shared/lib/helpers/classNames';
-import cls from './SidebarItems.module.scss';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useTranslation } from 'react-i18next';
 import HomeIcon from 'shared/assets/icons/home.svg';
 import { SidebarItemType } from 'widgets/Sidebar/model/items';
+import cls from './SidebarItems.module.scss';
 
 interface SidebarItemsProps {
     item?: SidebarItemType;
@@ -30,4 +30,5 @@ export const SidebarItems = ({ item, collapsed }: SidebarItemsProps) => {
             </AppLink>
         );
     }
+    return undefined;
 };

@@ -1,6 +1,6 @@
 import { renderWithTranslation } from "shared/lib/tests/renderWithTranslation/renderWithTranslation";
-import { Counter } from "./Counter";
 import {screen} from "@testing-library/react"
+import { Counter } from "./Counter";
 
 describe('Counter', () => {
     test('Counter', () => {
