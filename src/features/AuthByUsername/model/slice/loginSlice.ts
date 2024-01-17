@@ -3,9 +3,9 @@ import { LoginSchema } from '../types/loginSchema';
 import { loginByUsername } from '../services/loginByUsername/loginByUsername';
 
 const initialState: LoginSchema = {
-    isLoading: false,
     username: '',
     password: '',
+    isLoading: false,
 };
 
 export const loginSlice = createSlice({
@@ -19,21 +19,17 @@ export const loginSlice = createSlice({
             state.password = action.payload;
         },
     },
-
     extraReducers: (builder) => {
-        builder
-            .addCase(loginByUsername.pending, (state, action) => {
-                state.error = undefined;
-                state.isLoading = true;
-            })
-
-            .addCase(loginByUsername.fulfilled, (state, action) => {
-                state.isLoading = false;
-            })
-
-            .addCase(loginByUsername.rejected, (state, action) => {
-                state.isLoading = false;
-            });
+        builder.addCase(loginByUsername.pending, (state, action) => {
+            state.error = undefined;
+            state.isLoading = true;
+        });
+        builder.addCase(loginByUsername.fulfilled, (state, action) => {
+            state.isLoading = false;
+        });
+        builder.addCase(loginByUsername.rejected, (state, action) => {
+            state.isLoading = false;
+        });
     },
 });
 

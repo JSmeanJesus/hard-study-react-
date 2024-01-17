@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
+import { ReactNode } from 'react';
 import { Mods, classNames } from 'shared/lib/helpers/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { useModal } from 'shared/lib/hooks/useModal/useModal';
@@ -37,7 +37,7 @@ export const Modal = (props: ModalProps) => {
     }
 
     return (
-        <Portal element={document.getElementById('app') ?? document.body}>
+        <Portal element={document.getElementById('App') || undefined}>
             <div
                 className={classNames(cls.Modal, mods, [
                     className,

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/sun.svg';
@@ -9,7 +9,6 @@ import cls from './ThemeSwitcher.module.scss';
 interface ThemeSwitcherProps {
     className?: string;
 }
-// eslint-disable-next-line react/display-name
 export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme();
     return (
@@ -19,9 +18,6 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
             className={classNames(cls.ThemeSwitcher, {}, [className])}
         >
             {theme === Theme.Light ? <LightIcon /> : <LightIcon />}
-
-            {/* //Add dark icon */}
-            {/* {theme === Theme.Light ? <img src="shared/assets/icons/moon.svg" alt="light item icon" /> : <img src="" alt="dark item icon" /> } */}
         </Button>
     );
 });

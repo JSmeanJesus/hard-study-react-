@@ -9,7 +9,7 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
-//fake timeout
+// fake timeout
 server.use(async (req, res, next) => {
     await new Promise((res) => {
         setTimeout(res, 800);
@@ -20,7 +20,9 @@ server.use(async (req, res, next) => {
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
-        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+        const db = JSON.parse(
+            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+        );
         const { users = [] } = db;
 
         const userFromBd = users.find(
@@ -38,6 +40,7 @@ server.post('/login', (req, res) => {
     }
 });
 
+// eslint-disable-next-line consistent-return
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
         return res.status(403).json({ message: 'AUTH ERROR' });
