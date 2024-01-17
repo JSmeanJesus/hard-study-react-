@@ -1,32 +1,28 @@
 .Modal {
     position: fixed;
     inset: 0;
-    z-index: -1;
     opacity: 0;
     pointer-events: none;
-}
-
-.overlay {
-    width: 100%;
-    height: 100%;
-    background: var(--overlay-color);
+    z-index: 100;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .content {
-    padding: 24px 20px;
-    background: var(--bg-color);
+    padding: 20px;
+    border-radius: 12px;
     transition: 0.3s transform;
-    transform: scale(0.4);
+    transform: scale(0.5);
     max-width: 60%;
+    z-index: 100;
+    background: var(--inverted-bg-color);
 }
 
-.open {
+.opened {
+    pointer-events: auto;
     opacity: 1;
-    pointer-events: all;
-    z-index: var(--modal-z-index);
+    z-index: 100;
 
     .content {
         transform: scale(1);

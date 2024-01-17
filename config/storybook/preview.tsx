@@ -1,11 +1,11 @@
-import type { Preview } from '@storybook/react'
-import '../../src/app/styles/index.scss'
-import '../../src/app/styles/themes/dark.scss'
-import '../../src/app/styles/themes/light.scss'
-import React, { Suspense } from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import { I18nextProvider } from 'react-i18next'
-import i18next from 'i18next'
+import type { Preview } from '@storybook/react';
+import '../../src/app/styles/index.scss';
+import '../../src/app/styles/themes/dark.scss';
+import '../../src/app/styles/themes/light.scss';
+import React, { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
+import i18next from 'i18next';
 
 const preview: Preview = {
     parameters: {
@@ -30,6 +30,6 @@ const preview: Preview = {
             </Suspense>
         ),
     ],
-}
+};
 
-export default preview
+export default preview;
